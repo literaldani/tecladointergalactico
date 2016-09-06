@@ -8,12 +8,29 @@
 	<script src="assets/js/lib/paper-full.min.js" type="text/javascript" ></script>
 	<script type="text/paperscript" canvas="myCanvas">
 
-	for (var x = 0; x < 1000; x+=100) {
-		for (var y = 0; y < 1000; y+=100) {
-			new Path.Circle(new Point(x, y), 10).fillColor="#fff";
+	var circulos = [];
+	function onKeyDown(event) {
+	var maxPoint = new Point(view.size.width, view.size.height) * Point.random();
+	// console.log(maxPoint.round());
+	newCirculo = new Path.Circle(maxPoint, 500);
+	newCirculo.fillColor = "#9AD2CB";
+	// Se hace se deesta forma para poder agregar el valor de ciruclo y no el del fillColor
+	// circulos.push(new Path.Circle(maxPoint, 10).fillColor = "#9AD2CB"); <--- Asi no se puede porque pasamos el valor que no queremos
+	circulos.push(newCirculo);
+	}
+
+	// var aniCircle = new Path.Circle(new Point(100, 100), 50);
+	// aniCircle.fillColor = "orange";
+
+	function onFrame(event) {
+		// se hace un for para poder todos los circulos que se hayan creado
+		for (var i = 0; i < circulos.length; i++) {
+			circulos[i].fillColor.hue +=1;
+			circulos[i].scale(.92);
+			// console.log(circulos[i]);
 		}
-
-
+		// aniCircle.fillColor.hue +=1;
+		// aniCircle.scale(.9);
 	}
 
 	</script>
