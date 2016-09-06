@@ -215,6 +215,31 @@
 	// var aniCircle = new Path.Circle(new Point(100, 100), 50);
 	// aniCircle.fillColor = "orange";
 
+
+
+	function onMouseDown(event) {
+		// console.log('You pressed the mouse!');
+		// console.log(event.point);
+		// var ranSound = Math.floor(Math.random() * 26);
+		// console.log(Math.floor(Math.random() * 26));
+		// diccionario[event.key].sound.play();
+		var randomLetra = diccionario[Object.keys(diccionario)[Math.floor(Math.random()*Object.keys(diccionario).length)]];
+		var mouse = event.point;
+		newCirculo = new Path.Circle(mouse, 500);
+		newCirculo.fillColor = randomLetra.color;
+		circulos.push(newCirculo);
+		// Random Key
+		// console.log(Object.keys(diccionario)[Math.floor(Math.random()*Object.keys(diccionario).length)]);
+
+
+
+
+		randomLetra.sound.play();
+		// console.log(randomLetra.color);
+
+
+	}
+
 	function onFrame(event) {
 		// se hace un for para poder todos los circulos que se hayan creado
 		for (var i = 0; i < circulos.length; i++) {
@@ -225,6 +250,7 @@
 		// aniCircle.fillColor.hue +=1;
 		// aniCircle.scale(.9);
 	}
+
 
 	</script>
 </head>
