@@ -11,65 +11,205 @@
 
 	var diccionario = {
 		q:{
-			color: "red",
+			color: "#FF0000",
+			sound: new Howl({
+  				src: ['assets/mp3s/alcarajo.mp3']
+			})
+		},
+
+		w:{
+			color: "#999999",
+			sound: new Howl({
+  				src: ['assets/mp3s/alguna.mp3']
+			})
+		},
+
+		e:{
+			color: "#006400",
+			sound: new Howl({
+  				src: ['assets/mp3s/anda.mp3']
+			})
+		},
+
+		r:{
+			color: "#FFE74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/aprovecho.mp3']
+			})
+		},
+
+		t:{
+			color: "yellow",
 			sound: new Howl({
   				src: ['assets/mp3s/asesino.mp3']
 			})
-		}
+		},
 
-		w:{
-			color: "blue",
+		y:{
+			color: "#FFE74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/canta.mp3']
+			})
+		},
+
+		u:{
+			color: "#FF274C",
+			sound: new Howl({
+  				src: ['assets/mp3s/chico.mp3']
+			})
+		},
+
+		i:{
+			color: "#AFE74C",
 			sound: new Howl({
   				src: ['assets/mp3s/cobarde.mp3']
 			})
-		}
+		},
 
-		e:{
-			color: "green",
+		o:{
+			color: "#FF424C",
+			sound: new Howl({
+  				src: ['assets/mp3s/concecuencias.mp3']
+			})
+		},
+
+		p:{
+			color: "#63E74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/cristo.mp3']
+			})
+		},
+
+		a:{
+			color: "#01E74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/dama.mp3']
+			})
+		},
+
+		s:{
+			color: "#92E74C",
 			sound: new Howl({
   				src: ['assets/mp3s/eldiablo.mp3']
 			})
-		}
+		},
 
-		r:{
-			color: "yellow",
+		d:{
+			color: "#F2644C",
 			sound: new Howl({
   				src: ['assets/mp3s/eresunburro.mp3']
 			})
-		}
+		},
+
+		f:{
+			color: "#41E744",
+			sound: new Howl({
+  				src: ['assets/mp3s/eresunignorante.mp3']
+			})
+		},
+
+		g:{
+			color: "#F5E741",
+			sound: new Howl({
+  				src: ['assets/mp3s/fasista.mp3']
+			})
+		},
+
+		h:{
+			color: "#51E751",
+			sound: new Howl({
+  				src: ['assets/mp3s/gobtraidor.mp3']
+			})
+		},
+
+		j:{
+			color: "#1FE731",
+			sound: new Howl({
+  				src: ['assets/mp3s/hueleazufre.mp3']
+			})
+		},
+
+		k:{
+			color: "#A1514C",
+			sound: new Howl({
+  				src: ['assets/mp3s/jijiji.mp3']
+			})
+		},
+
+		l:{
+			color: "#FF564C",
+			sound: new Howl({
+  				src: ['assets/mp3s/majunche.mp3']
+			})
+		},
+
+		z:{
+			color: "#67E74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/masnada.mp3']
+			})
+		},
+
+		x:{
+			color: "#FFE74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/obinson.mp3']
+			})
+		},
+
+		c:{
+			color: "#FFE74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/pitiyanky.mp3']
+			})
+		},
+
+		v:{
+			color: "#FFE74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/pueblodigno.mp3']
+			})
+		},
+		b:{
+			color: "#FFE74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/queque.mp3']
+			})
+		},
+
+		n:{
+			color: "#FFE74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/temetiste.mp3']
+			})
+		},
+
+		m:{
+			color: "#FFE74C",
+			sound: new Howl({
+  				src: ['assets/mp3s/viceras.mp3']
+			})
+		},
+
+
 	}
 
 
-	var sound1 = new Howl({
-  		src: ['assets/mp3s/asesino.mp3']
-		});
-	var sound2 = new Howl({
-  		src: ['assets/mp3s/cobarde.mp3']
-		});
 
-
-	// git checkout realizado
 
 	var circulos = [];
 	function onKeyDown(event) {
+		if (event.key) {
+			var maxPoint = new Point(view.size.width, view.size.height) * Point.random();
+			newCirculo = new Path.Circle(maxPoint, 500);
+			newCirculo.fillColor = diccionario[event.key].color;
+			diccionario[event.key].sound.play();
 
-		var maxPoint = new Point(view.size.width, view.size.height) * Point.random();
-		// console.log(maxPoint.round());
-		newCirculo = new Path.Circle(maxPoint, 500);
-		if (event.key === "a") {
-			sound1.play();
-			newCirculo.fillColor = "#472836";
-		}
-		if (event.key === "s") {
-			sound2.play();
-			newCirculo.fillColor = "#50C9CE";
-		}else{
-			newCirculo.fillColor = "#9AD2CB";
+			/* Se hace se deesta forma para poder agregar el valor de ciruclo y no el del fillColor. circulos.push(new Path.Circle(maxPoint, 10).fillColor = "#9AD2CB"); <--- Asi no se puede porque pasamos el valor que no queremos */
+
+			circulos.push(newCirculo);
 		}
 
-		// Se hace se deesta forma para poder agregar el valor de ciruclo y no el del fillColor
-		// circulos.push(new Path.Circle(maxPoint, 10).fillColor = "#9AD2CB"); <--- Asi no se puede porque pasamos el valor que no queremos
-		circulos.push(newCirculo);
 	}
 
 	// var aniCircle = new Path.Circle(new Point(100, 100), 50);
