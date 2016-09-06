@@ -9,6 +9,37 @@
 	<script src="assets/js/lib/paper-full.min.js" type="text/javascript" ></script>
 	<script type="text/paperscript" canvas="myCanvas">
 
+	var diccionario = {
+		q:{
+			color: "red",
+			sound: new Howl({
+  				src: ['assets/mp3s/asesino.mp3']
+			})
+		}
+
+		w:{
+			color: "blue",
+			sound: new Howl({
+  				src: ['assets/mp3s/cobarde.mp3']
+			})
+		}
+
+		e:{
+			color: "green",
+			sound: new Howl({
+  				src: ['assets/mp3s/eldiablo.mp3']
+			})
+		}
+
+		r:{
+			color: "yellow",
+			sound: new Howl({
+  				src: ['assets/mp3s/eresunburro.mp3']
+			})
+		}
+	}
+
+
 	var sound1 = new Howl({
   		src: ['assets/mp3s/asesino.mp3']
 		});
