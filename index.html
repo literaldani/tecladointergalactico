@@ -256,6 +256,11 @@
 			circulos[i].fillColor.hue +=1;
 			circulos[i].scale(.92);
 			// console.log(circulos[i]);
+			if (circulos[i].area < 1) {
+				circulos[i].remove();
+				circulos.splice(i,1);
+				console.log(circulos);
+			}
 		}
 		// aniCircle.fillColor.hue +=1;
 		// aniCircle.scale(.9);
